@@ -5,6 +5,7 @@ import App from '@/components/App';
 import Dashboard from '@/components/Dashboard';
 import Login from '@/components/Login';
 import Profile from '@/components/Profile';
+import NotFound from '@/components/NotFound';
 
 
 Vue.use(Router);
@@ -36,6 +37,11 @@ const routes = [
         component: Profile
       }
     ]
+  },
+  {
+    path: '*',
+    name: 'notFound',
+    component: NotFound
   }
 ];
 
