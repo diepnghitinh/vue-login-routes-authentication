@@ -7,17 +7,27 @@
       </b-link>
       <b-collapse is-nav id="nav_collapse">
         <b-nav is-nav-bar>
-          <b-nav-item><router-link v-bind:to="{name: 'dashboard'}">Dashboard</router-link></b-nav-item>
-          <b-nav-item><router-link v-bind:to="{name: 'about'}">About</router-link></b-nav-item>
+          <b-nav-item><router-link v-bind:to="{name: 'dashboard'}">{{$t('DASHBOARD')}}</router-link></b-nav-item>
+          <b-nav-item-dropdown right-alignment>
+            <template slot="text">
+              <span style="font-weight: bold;">{{$t('TEACHERS')}}</span>
+            </template>
+            <b-dropdown-item v-on:click="goToTeachersManage()">{{$t('MANAGE')}}</b-dropdown-item>
+            <b-dropdown-item v-on:click="goToTeachersSubjects()">{{$t('SUBJECTS')}}</b-dropdown-item>
+            <b-dropdown-item v-on:click="goToTeachersClassrooms()">{{$t('CLASSROOMS')}}</b-dropdown-item>
+          </b-nav-item-dropdown>
+          <b-nav-item><router-link v-bind:to="{name: 'about'}">{{$t('ABOUT')}}</router-link></b-nav-item>
+          <span v-if="isLoading"> Loading... </span>
         </b-nav>
         <b-nav is-nav-bar class="ml-auto">
           <b-nav-item-dropdown right-alignment>
             <!-- Using text slot -->
             <template slot="text">
-              <span style="font-weight: bold;">User</span>
+              <span style="font-weight: bold;">{{$t('USER')}}</span>
             </template>
-            <b-dropdown-item v-on:click="goToProfile()">Profile</b-dropdown-item>
-            <b-dropdown-item v-on:click="signout()">Signout</b-dropdown-item>
+            <b-dropdown-item v-on:click="goToProfile()">{{$t('PROFILE')}}</b-dropdown-item>
+            <b-dropdown-item v-on:click="signout()">{{$t('SIGNOUT')}}</b-dropdown-item>
+            <b-dropdown-item v-on:click="SHOW_LOADING()">Test</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-nav>
       </b-collapse>
@@ -25,11 +35,30 @@
     <router-view></router-view>
   </div>
 </template>
-
 <script>
+  import { mapGetters, mapMutations } from 'vuex';
+
   export default {
+    computed: {
+      ...mapGetters([
+        'isLoading'
+      ])
+    },
     methods: {
-      goToProfile: function signout() {
+      ...mapMutations([
+        'SHOW_LOADING'
+      ]),
+      /* Teachers */
+      goToTeachersClassrooms: function gotToTeachersClassrooms() {
+        this.$router.push({ name: 'classrooms' });
+      },
+      goToTeachersManage: function gotToTeachersManage() {
+        this.$router.push({ name: 'manage' });
+      },
+      goToTeachersSubjects: function gotToTeachersSubjects() {
+        this.$router.push({ name: 'subjects' });
+      },
+      goToProfile: function goToProfile() {
         this.$router.push({ name: 'profile' });
       },
       signout: function signout() {
