@@ -5,13 +5,12 @@ import App from '@/components/App';
 import Dashboard from '@/components/Dashboard';
 import Login from '@/components/Login';
 import Profile from '@/components/Profile';
-import Teachers from '@/components/Teachers/Teachers';
+import Teachers from '@/components/Teachers/app-teachers';
 
 /* Teachers */
-import TeachersClassrooms from '@/components/Teachers/Classrooms';
-import TeachersManage from '@/components/Teachers/Manage';
-import TeachersSubjects from '@/components/Teachers/Subjects';
-
+import TeachersClassrooms from '@/components/Teachers/teachers-classrooms';
+import TeachersManage from '@/components/Teachers/teachers-manage';
+import TeachersSubjects from '@/components/Teachers/teachers-subjects';
 
 /* Others */
 import NotFound from '@/components/NotFound';

@@ -17,7 +17,7 @@
             <b-dropdown-item v-on:click="goToTeachersClassrooms()">{{$t('CLASSROOMS')}}</b-dropdown-item>
           </b-nav-item-dropdown>
           <b-nav-item><router-link v-bind:to="{name: 'about'}">{{$t('ABOUT')}}</router-link></b-nav-item>
-          <span v-if="isLoading"> Loading... </span>
+          <span> Loading... </span>
         </b-nav>
         <b-nav is-nav-bar class="ml-auto">
           <b-nav-item-dropdown right-alignment>
@@ -36,18 +36,8 @@
   </div>
 </template>
 <script>
-  import { mapGetters, mapMutations } from 'vuex';
-
   export default {
-    computed: {
-      ...mapGetters([
-        'isLoading'
-      ])
-    },
     methods: {
-      ...mapMutations([
-        'SHOW_LOADING'
-      ]),
       /* Teachers */
       goToTeachersClassrooms: function gotToTeachersClassrooms() {
         this.$router.push({ name: 'classrooms' });

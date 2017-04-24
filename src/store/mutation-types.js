@@ -1,2 +1,5 @@
-export const SHOW_LOADING = 'SHOW_LOADING';
-export const HIDE_LOADING = 'HIDE_LOADING';
+// Common
+export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+
+// Teachers Module
+export const FETCH_TEACHERS = 'FETCH_TEACHERS';
