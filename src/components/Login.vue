@@ -6,12 +6,12 @@
     <div class="col-lg-4">
       <div class="nb-login">
         <h3 class="scenter">Sign In</h3>
-        <form>
+        <form @submit.prevent="login({username, password})">
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="Enter Email">
+            <input type="text" class="form-control" v-model="username" placeholder="Enter Username" required>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="Enter Password">
+            <input type="password" class="form-control" v-model="password" placeholder="Enter Password" required>
           </div>
           <div class="checkbox">
             <label>
@@ -26,7 +26,25 @@
 </template>
 <script>
   export default {
-
+    data() {
+      return {
+        username: '',
+        password: ''
+      };
+    },
+    methods: {
+      login() {
+        this.$store.dispatch('LOGIN', {
+          username: this.username,
+          password: this.password
+        }).then(() => {
+          this.$router.push({ name: 'dashboard' });
+        })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
   };
 </script>
 <style>

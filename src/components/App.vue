@@ -26,7 +26,7 @@
               <span style="font-weight: bold;">{{$t('USER')}}</span>
             </template>
             <b-dropdown-item v-on:click="goToProfile()">{{$t('PROFILE')}}</b-dropdown-item>
-            <b-dropdown-item v-on:click="signout()">{{$t('SIGNOUT')}}</b-dropdown-item>
+            <b-dropdown-item v-if="isLoggedIn" v-on:click="signout()">{{$t('SIGNOUT')}}</b-dropdown-item>
             <b-dropdown-item v-on:click="SHOW_LOADING()">Test</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-nav>
@@ -52,8 +52,13 @@
         this.$router.push({ name: 'profile' });
       },
       signout: function signout() {
-        // TODO: Clean logged data
+        this.$store.dispatch('LOGOUT');
         this.$router.push({ name: 'login' });
+      }
+    },
+    computed: {
+      isLoggedIn() {
+        return this.$store.getters.isLoggedIn;
       }
     }
   };

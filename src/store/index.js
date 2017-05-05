@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
+import auth from './modules/auth';
 import teachers from './modules/teachers';
 
 Vue.use(Vuex);
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
   actions,
   mutations,
   modules: {
+    auth,
     teachers
   },
   strict: debug

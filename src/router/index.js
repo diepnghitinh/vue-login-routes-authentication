@@ -12,9 +12,9 @@ import TeachersClassrooms from '@/components/Teachers/teachers-classrooms';
 import TeachersManage from '@/components/Teachers/teachers-manage';
 import TeachersSubjects from '@/components/Teachers/teachers-subjects';
 
+import { requireAuth, verifyIsLoggedIn } from '../utils/auth';
 /* Others */
-import NotFound from '@/components/NotFound';
-
+// import NotFound from '@/components/NotFound';
 
 Vue.use(Router);
 
@@ -22,56 +22,71 @@ const routes = [
   {
     path: '/app/login',
     name: 'login',
-    component: Login
+    component: Login,
+    beforeEnter: verifyIsLoggedIn
   },
   {
     path: '/app',
     name: 'app',
     component: App,
+    beforeEnter: requireAuth,
     children: [
       {
         name: 'about',
         path: 'about',
-        component: About
+        component: About,
+        beforeEnter: requireAuth
       },
       {
         name: 'dashboard',
         path: '',
-        component: Dashboard
+        component: Dashboard,
+        beforeEnter: requireAuth
       },
       {
         name: 'profile',
         path: 'profile',
-        component: Profile
+        component: Profile,
+        beforeEnter: requireAuth
       },
       {
         name: 'teachers',
         path: 'teachers',
         component: Teachers,
+        beforeEnter: requireAuth,
         children: [
           {
             name: 'classrooms',
             path: 'classrooms',
-            component: TeachersClassrooms
+            component: TeachersClassrooms,
+            beforeEnter: requireAuth
           },
           {
             name: 'manage',
             path: 'manage',
-            component: TeachersManage
+            component: TeachersManage,
+            beforeEnter: requireAuth
           },
           {
             name: 'subjects',
             path: 'subjects',
-            component: TeachersSubjects
+            component: TeachersSubjects,
+            beforeEnter: requireAuth
           }
         ]
       }
     ]
   },
+  // {
+  //   path: '*',
+  //   name: 'notFound',
+  //   component: NotFound
+  // }
   {
     path: '*',
-    name: 'notFound',
-    component: NotFound
+    name: 'login',
+    component: Login,
+    beforeEnter: verifyIsLoggedIn
   }
 ];
 
