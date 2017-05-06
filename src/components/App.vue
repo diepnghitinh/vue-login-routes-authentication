@@ -1,43 +1,47 @@
 <template>
   <div class="mainContent">
-    <b-navbar toggleable type="inverse" variant="success">
-      <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-      <b-link class="navbar-brand" to="#">
-        <span>BootstrapVue</span>
-      </b-link>
-      <b-collapse is-nav id="nav_collapse">
-        <b-nav is-nav-bar>
-          <b-nav-item><router-link v-bind:to="{name: 'dashboard'}">{{$t('DASHBOARD')}}</router-link></b-nav-item>
-          <b-nav-item-dropdown right-alignment>
-            <template slot="text">
-              <span style="font-weight: bold;">{{$t('TEACHERS')}}</span>
-            </template>
-            <b-dropdown-item v-on:click="goToTeachersManage()">{{$t('MANAGE')}}</b-dropdown-item>
-            <b-dropdown-item v-on:click="goToTeachersSubjects()">{{$t('SUBJECTS')}}</b-dropdown-item>
-            <b-dropdown-item v-on:click="goToTeachersClassrooms()">{{$t('CLASSROOMS')}}</b-dropdown-item>
-          </b-nav-item-dropdown>
-          <b-nav-item><router-link v-bind:to="{name: 'about'}">{{$t('ABOUT')}}</router-link></b-nav-item>
-          <span> Loading... </span>
-        </b-nav>
-        <b-nav is-nav-bar class="ml-auto">
-          <b-nav-item-dropdown right-alignment>
-            <!-- Using text slot -->
-            <template slot="text">
-              <span style="font-weight: bold;">{{$t('USER')}}</span>
-            </template>
-            <b-dropdown-item v-on:click="goToProfile()">{{$t('PROFILE')}}</b-dropdown-item>
-            <b-dropdown-item v-if="isLoggedIn" v-on:click="signout()">{{$t('SIGNOUT')}}</b-dropdown-item>
-            <b-dropdown-item v-on:click="SHOW_LOADING()">Test</b-dropdown-item>
-          </b-nav-item-dropdown>
-        </b-nav>
-      </b-collapse>
-    </b-navbar>
+    <noh-menu type="inverse" v-bind:title="title" v-bind:left-options="leftOptions" v-bind:right-options="rightOptions" sticky="top"></noh-menu>
     <router-view></router-view>
   </div>
 </template>
 <script>
   export default {
+    data() {
+      return {
+        title: { value: 'Walter Chavarria', onclick: this.goToDashboard },
+        leftOptions: [
+          { id: '1', type: 'simple', key: 'dashboard', value: 'DASHBOARD' },
+          {
+            id: '2',
+            type: 'dropdown',
+            key: 'teacher',
+            value: 'TEACHERS',
+            options: [
+              { id: '1', value: 'MANAGE', onclick: this.goToTeachersManage },
+              { id: '2', value: 'SUBJECTS', onclick: this.goToTeachersSubjects },
+              { id: '3', value: 'CLASSROOMS', onclick: this.goToTeachersClassrooms }
+            ]
+          },
+          { id: '3', type: 'simple', key: 'about', value: 'ABOUT' }
+        ],
+        rightOptions: [
+          {
+            id: '1',
+            type: 'dropdown',
+            key: 'teacher',
+            value: 'USER',
+            options: [
+              { id: '1', value: 'PROFILE', onclick: this.goToProfile },
+              { id: '2', value: 'SIGNOUT', onclick: this.signout }
+            ]
+          }
+        ]
+      };
+    },
     methods: {
+      goToDashboard: function goToDashboard() {
+        this.$router.push({ name: 'dashboard' });
+      },
       /* Teachers */
       goToTeachersClassrooms: function gotToTeachersClassrooms() {
         this.$router.push({ name: 'classrooms' });
@@ -66,6 +70,6 @@
 <style>
   .mainContent {
     padding: 20px;
-    height: 300px;
+    min-height: 300px;
   }
 </style>

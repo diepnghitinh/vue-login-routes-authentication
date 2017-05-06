@@ -12,7 +12,7 @@ import TeachersClassrooms from '@/components/Teachers/teachers-classrooms';
 import TeachersManage from '@/components/Teachers/teachers-manage';
 import TeachersSubjects from '@/components/Teachers/teachers-subjects';
 
-import { requireAuth, verifyIsLoggedIn } from '../utils/auth';
+// import { requireAuth, verifyIsLoggedIn } from '../utils/auth';
 /* Others */
 // import NotFound from '@/components/NotFound';
 
@@ -20,73 +20,65 @@ Vue.use(Router);
 
 const routes = [
   {
-    path: '/app/login',
-    name: 'login',
-    component: Login,
-    beforeEnter: verifyIsLoggedIn
-  },
-  {
     path: '/app',
     name: 'app',
     component: App,
-    beforeEnter: requireAuth,
     children: [
       {
         name: 'about',
         path: 'about',
-        component: About,
-        beforeEnter: requireAuth
+        component: About /* ,
+        beforeEnter: requireAuth */
       },
       {
         name: 'dashboard',
         path: '',
-        component: Dashboard,
-        beforeEnter: requireAuth
+        component: Dashboard
+      },
+      {
+        name: 'login',
+        path: 'login',
+        component: Login/* ,
+        beforeEnter: verifyIsLoggedIn */
       },
       {
         name: 'profile',
         path: 'profile',
-        component: Profile,
-        beforeEnter: requireAuth
+        component: Profile /* ,
+        beforeEnter: requireAuth */
       },
       {
         name: 'teachers',
         path: 'teachers',
         component: Teachers,
-        beforeEnter: requireAuth,
+        /* beforeEnter: requireAuth, */
         children: [
           {
             name: 'classrooms',
             path: 'classrooms',
-            component: TeachersClassrooms,
-            beforeEnter: requireAuth
+            component: TeachersClassrooms/* ,
+            beforeEnter: requireAuth*/
           },
           {
             name: 'manage',
             path: 'manage',
-            component: TeachersManage,
-            beforeEnter: requireAuth
+            component: TeachersManage /* ,
+            beforeEnter: requireAuth*/
           },
           {
             name: 'subjects',
             path: 'subjects',
-            component: TeachersSubjects,
-            beforeEnter: requireAuth
+            component: TeachersSubjects/* ,
+            beforeEnter: requireAuth */
           }
         ]
       }
     ]
   },
-  // {
-  //   path: '*',
-  //   name: 'notFound',
-  //   component: NotFound
-  // }
   {
     path: '*',
-    name: 'login',
-    component: Login,
-    beforeEnter: verifyIsLoggedIn
+    name: 'app',
+    component: App
   }
 ];
 
