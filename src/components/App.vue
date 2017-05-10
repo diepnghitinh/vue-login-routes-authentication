@@ -8,39 +8,12 @@
   export default {
     data() {
       return {
-        title: { value: 'Walter Chavarria', onclick: this.goToDashboard },
-        leftOptions: [
-          { id: '1', type: 'simple', key: 'dashboard', value: 'DASHBOARD' },
-          {
-            id: '2',
-            type: 'dropdown',
-            key: 'teacher',
-            value: 'TEACHERS',
-            options: [
-              { id: '1', value: 'MANAGE', onclick: this.goToTeachersManage },
-              { id: '2', value: 'SUBJECTS', onclick: this.goToTeachersSubjects },
-              { id: '3', value: 'CLASSROOMS', onclick: this.goToTeachersClassrooms }
-            ]
-          },
-          { id: '3', type: 'simple', key: 'about', value: 'ABOUT' }
-        ],
-        rightOptions: [
-          {
-            id: '1',
-            type: 'dropdown',
-            key: 'teacher',
-            value: 'USER',
-            options: [
-              { id: '1', value: 'PROFILE', onclick: this.goToProfile },
-              { id: '2', value: 'SIGNOUT', onclick: this.signout }
-            ]
-          }
-        ]
+        title: { value: 'Walter Chavarria', onclick: this.goToDashboard }
       };
     },
     methods: {
       goToDashboard: function goToDashboard() {
-        this.$router.push({ name: 'dashboard' });
+        this.$router.push({ name: 'profile' });
       },
       /* Teachers */
       goToTeachersClassrooms: function gotToTeachersClassrooms() {
@@ -52,8 +25,8 @@
       goToTeachersSubjects: function gotToTeachersSubjects() {
         this.$router.push({ name: 'subjects' });
       },
-      goToProfile: function goToProfile() {
-        this.$router.push({ name: 'profile' });
+      goToAccount: function goToAccount() {
+        this.$router.push({ name: 'account' });
       },
       signout: function signout() {
         this.$store.dispatch('LOGOUT');
@@ -61,6 +34,39 @@
       }
     },
     computed: {
+      rightOptions() {
+        return [
+          {
+            id: '1',
+            type: 'dropdown',
+            key: 'teacher',
+            value: 'USER',
+            isVisible: this.isLoggedIn,
+            options: [
+              { id: '2', value: 'ACCOUNT', isVisible: true, onclick: this.goToAccount },
+              { id: '3', value: 'SIGNOUT', isVisible: true, onclick: this.signout }
+            ]
+          }
+        ];
+      },
+      leftOptions() {
+        return [
+          { id: '4', type: 'simple', key: 'profile', value: 'PROFILE', isVisible: true },
+          {
+            id: '5',
+            type: 'dropdown',
+            key: 'teacher',
+            value: 'TEACHERS',
+            isVisible: true,
+            options: [
+              { id: '6', value: 'MANAGE', isVisible: true, onclick: this.goToTeachersManage },
+              { id: '7', value: 'SUBJECTS', isVisible: true, onclick: this.goToTeachersSubjects },
+              { id: '8', value: 'CLASSROOMS', isVisible: true, onclick: this.goToTeachersClassrooms }
+            ]
+          },
+          { id: '9', type: 'simple', key: 'about', value: 'ABOUT', isVisible: true }
+        ];
+      },
       isLoggedIn() {
         return this.$store.getters.isLoggedIn;
       }

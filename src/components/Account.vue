@@ -1,11 +1,10 @@
 <template>
-  <noh-panel header="Subjects">
-    <h1>Subjects</h1>
+  <noh-panel header="Account">
+    <h1>Account</h1>
     <div>Coming soon...</div>
   </noh-panel>
 </template>
 <script>
   export default {
-
   };
 </script>

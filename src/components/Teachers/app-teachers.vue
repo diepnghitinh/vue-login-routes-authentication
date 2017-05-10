@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <h2>Teachers</h2>
+  <noh-panel header="Teachers">
     <router-view></router-view>
-  </div>
+  </noh-panel>
 </template>
 <script>
   export default {

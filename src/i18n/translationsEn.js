@@ -1,9 +1,9 @@
 const mainMenu = {
   ABOUT: 'About',
   CLASSROOMS: 'Classrooms',
-  DASHBOARD: 'Dashboard',
-  MANAGE: 'Manage',
   PROFILE: 'Profile',
+  MANAGE: 'Manage',
+  ACCOUNT: 'Account',
   TEACHERS: 'Teachers',
   USER: 'User',
   SIGNOUT: 'Signout',

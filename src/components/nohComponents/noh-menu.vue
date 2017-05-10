@@ -6,18 +6,18 @@
     </b-link>
     <b-collapse is-nav id="nav_collapse">
       <b-nav is-nav-bar>
-        <template v-for="item in leftOptions">
+        <template v-for="item in wLeftOptions" v-if="item.isVisible">
           <b-nav-item v-if="item.type === 'simple'"><router-link v-bind:to="{name: item.key}">{{$t(item.value)}}</router-link></b-nav-item>
           <b-nav-item-dropdown v-if="item.type === 'dropdown'" right-alignment>
             <template slot="text">
               <span>{{$t(item.value)}}</span>
             </template>
-            <b-dropdown-item v-for="subitem in item.options" v-bind:key="item.id" v-on:click="subitem.onclick()">{{$t(subitem.value)}}</b-dropdown-item>
+            <b-dropdown-item v-for="subitem in item.options" v-if="item.isVisible" v-bind:key="item.id" v-on:click="subitem.onclick()">{{$t(subitem.value)}}</b-dropdown-item>
           </b-nav-item-dropdown>
         </template>
       </b-nav>
       <b-nav is-nav-bar class="ml-auto">
-        <template v-for="item in rightOptions">
+        <template v-for="item in wRightOptions" v-if="item.isVisible">
           <b-nav-item-dropdown v-if="item.type === 'dropdown'" right-alignment>
             <template slot="text">
               <span>{{$t(item.value)}}</span>
@@ -29,6 +29,7 @@
     </b-collapse>
   </b-navbar>
 </template>
+
 <script>
   export default {
     name: 'noh-panel',
@@ -61,22 +62,18 @@
     }
   };
 </script>
+
 <style lang="scss">
   .bg-navBar {
     background: #34495e;
   }
   .menu, a, a > span{
-    color: #1abc9c;
+    color: #37ecc9;
     text-decoration: none;
 
     &:hover, &:focus, &:active {
-      color: #1bc6a4;
+      color: #37ecc9;
       text-decoration: none;
     }
   }
-
-
-
-
-
 </style>
