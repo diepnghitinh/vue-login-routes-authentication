@@ -28,12 +28,14 @@ const actions = {
     commit(types.LOGIN);
     return api.login(state, URI, (data) => {
       localStorage.setItem('token', data.token);
+      // localStorage.setItem('permissions', data.token);
       commit(types.LOGIN_SUCCESS);
       commit(types.FETCH_TEACHERS, data);
     }, creds);
   },
   [types.LOGOUT]({ commit }) {
     localStorage.removeItem('token');
+    // localStorage.removeItem('permissions');
     commit(types.LOGOUT);
   }
 };

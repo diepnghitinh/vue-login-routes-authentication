@@ -34,21 +34,6 @@
       }
     },
     computed: {
-      rightOptions() {
-        return [
-          {
-            id: '1',
-            type: 'dropdown',
-            key: 'teacher',
-            value: 'USER',
-            isVisible: this.isLoggedIn,
-            options: [
-              { id: '2', value: 'ACCOUNT', isVisible: true, onclick: this.goToAccount },
-              { id: '3', value: 'SIGNOUT', isVisible: true, onclick: this.signout }
-            ]
-          }
-        ];
-      },
       leftOptions() {
         return [
           { id: '4', type: 'simple', key: 'profile', value: 'PROFILE', isVisible: true },
@@ -65,6 +50,21 @@
             ]
           },
           { id: '9', type: 'simple', key: 'about', value: 'ABOUT', isVisible: true }
+        ];
+      },
+      rightOptions() {
+        return [
+          {
+            id: '1',
+            type: 'dropdown',
+            key: 'teacher',
+            value: 'USER',
+            isVisible: this.isLoggedIn,
+            options: [
+              { id: '2', value: 'ACCOUNT', isVisible: true, onclick: this.goToAccount },
+              { id: '3', value: 'SIGNOUT', isVisible: true, onclick: this.signout }
+            ]
+          }
         ];
       },
       isLoggedIn() {

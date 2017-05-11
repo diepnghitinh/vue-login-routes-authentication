@@ -27,7 +27,7 @@
           username: this.username,
           password: this.password
         }).then(() => {
-          this.$router.push({ name: 'dashboard' });
+          this.$router.push({ name: 'profile' });
         })
           .catch((error) => {
             console.log(error);

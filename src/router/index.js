@@ -1,20 +1,20 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import About from '@/components/About';
-import App from '@/components/App';
-import Profile from '@/components/Profile';
-import Login from '@/components/Login';
 import Account from '@/components/Account';
-import Teachers from '@/components/Teachers/app-teachers';
+import App from '@/components/App';
+import Login from '@/components/Login';
 import NotFound from '@/components/NotFound';
+import Profile from '@/components/Profile';
+
 
 /* Teachers */
+import Teachers from '@/components/Teachers/app-teachers';
 import TeachersClassrooms from '@/components/Teachers/teachers-classrooms';
 import TeachersManage from '@/components/Teachers/teachers-manage';
 import TeachersSubjects from '@/components/Teachers/teachers-subjects';
 
-import { requireAuth, verifyIsLoggedIn } from '../utils/auth';
-/* Others */
+import { requireAuth , verifyIsLoggedIn } from '../utils/auth';
 
 
 Vue.use(Router);
