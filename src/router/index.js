@@ -14,8 +14,7 @@ import TeachersClassrooms from '@/components/Teachers/teachers-classrooms';
 import TeachersManage from '@/components/Teachers/teachers-manage';
 import TeachersSubjects from '@/components/Teachers/teachers-subjects';
 
-import { requireAuth , verifyIsLoggedIn } from '../utils/auth';
-
+import { requireAuth, verifyIsLoggedIn } from '../utils/auth';
 
 Vue.use(Router);
 
