@@ -8,6 +8,10 @@ import NotFound from '@/components/NotFound';
 import Profile from '@/components/Profile';
 
 
+/* Inventory */
+import Inventory from '@/components/Inventory/app-inventory';
+import InventoryGoods from '@/components/Inventory/inventory-goods';
+
 /* Teachers */
 import Teachers from '@/components/Teachers/app-teachers';
 import TeachersClassrooms from '@/components/Teachers/teachers-classrooms';
@@ -46,6 +50,19 @@ const routes = [
         path: 'account',
         component: Account /* ,
         beforeEnter: requireAuth */
+      },
+      {
+        name: 'inventory',
+        path: 'inventory',
+        component: Inventory,
+        beforeEnter: requireAuth,
+        children: [
+          {
+            name: 'goods',
+            path: 'goods',
+            component: InventoryGoods,
+            beforeEnter: requireAuth
+          }]
       },
       {
         name: 'teachers',

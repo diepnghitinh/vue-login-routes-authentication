@@ -15,6 +15,10 @@
       goToDashboard: function goToDashboard() {
         this.$router.push({ name: 'profile' });
       },
+      /*  */
+      goToInventoryGoods: function goToInventoryGoods() {
+        this.$router.push({ name: 'goods' });
+      },
       /* Teachers */
       goToTeachersClassrooms: function gotToTeachersClassrooms() {
         this.$router.push({ name: 'classrooms' });
@@ -40,16 +44,26 @@
           {
             id: '5',
             type: 'dropdown',
+            key: 'inventory',
+            value: 'INVENTORY',
+            isVisible: true,
+            options: [
+              { id: '6', value: 'GOODS', isVisible: true, onclick: this.goToInventoryGoods }
+            ]
+          },
+          {
+            id: '10',
+            type: 'dropdown',
             key: 'teacher',
             value: 'TEACHERS',
             isVisible: true,
             options: [
-              { id: '6', value: 'MANAGE', isVisible: true, onclick: this.goToTeachersManage },
-              { id: '7', value: 'SUBJECTS', isVisible: true, onclick: this.goToTeachersSubjects },
-              { id: '8', value: 'CLASSROOMS', isVisible: true, onclick: this.goToTeachersClassrooms }
+              { id: '11', value: 'MANAGE', isVisible: true, onclick: this.goToTeachersManage },
+              { id: '12', value: 'SUBJECTS', isVisible: true, onclick: this.goToTeachersSubjects },
+              { id: '13', value: 'CLASSROOMS', isVisible: true, onclick: this.goToTeachersClassrooms }
             ]
           },
-          { id: '9', type: 'simple', key: 'about', value: 'ABOUT', isVisible: true }
+          { id: '14', type: 'simple', key: 'about', value: 'ABOUT', isVisible: true }
         ];
       },
       rightOptions() {

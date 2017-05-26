@@ -38,6 +38,6 @@ module.exports = {
     'comma-dangle': [2, "never"],
     //
     'no-param-reassign': ["error", { "props": false }],
-    'linebreak-style': [1, "windows"]
+    'linebreak-style': [0, "windows"]
   }
 };

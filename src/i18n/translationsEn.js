@@ -7,7 +7,11 @@ const mainMenu = {
   TEACHERS: 'Teachers',
   USER: 'User',
   SIGNOUT: 'Signout',
-  SUBJECTS: 'Subjects'
+  SUBJECTS: 'Subjects',
+
+  /* INVENTORY */
+  INVENTORY: 'Inventory',
+  GOODS: 'Goods'
 };
 
 export default { ...mainMenu };
