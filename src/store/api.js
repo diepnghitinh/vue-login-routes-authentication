@@ -1,10 +1,21 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:3001/' : 'http://localhost:3001/';
+const BASE_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:3001/api/' : 'http://localhost:3001/api/';
 
 export default {
   getTeachers(state, URI, cb) {
-    axios.get(BASE_URL + URI)
+    const userURI = `users/${localStorage.getItem('userId')}/`;
+    axios.get(BASE_URL + userURI + URI)
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          cb(res.data);
+        }
+      })
+      .catch(error => Promise.reject(error));
+  },
+  getInventories(state, URI, cb) {
+    const userURI = `users/${localStorage.getItem('userId')}/`;
+    axios.get(BASE_URL + userURI + URI)
       .then((res) => {
         if (res.status >= 200 && res.status < 300) {
           cb(res.data);

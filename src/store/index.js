@@ -4,6 +4,7 @@ import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
 import auth from './modules/auth';
+import inventories from './modules/inventories';
 import teachers from './modules/teachers';
 
 Vue.use(Vuex);
@@ -27,6 +28,7 @@ const store = new Vuex.Store({
   mutations,
   modules: {
     auth,
+    inventories,
     teachers
   },
   strict: debug

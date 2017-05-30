@@ -1,7 +1,7 @@
 import api from '../api';
 import * as types from '../mutation-types';
 
-const URI = 'api/teachers';
+const URI = 'teachers';
 const state = {
   teachers: []
 };

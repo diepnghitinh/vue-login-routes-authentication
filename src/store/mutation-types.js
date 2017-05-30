@@ -1,6 +1,9 @@
 // Common
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 
+// Inventories Module
+export const FETCH_INVENTORIES = 'FETCH_INVENTORIES';
+
 // Teachers Module
 export const FETCH_TEACHERS = 'FETCH_TEACHERS';
 
