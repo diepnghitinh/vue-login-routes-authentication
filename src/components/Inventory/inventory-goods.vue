@@ -1,5 +1,5 @@
 <template>
-  <noh-panel header="Goods">
+  <noh-panel header="Goods" v-bind:buttons="buttons">
     <div class="justify-content-centermy-1 row">
       <b-form-fieldset horizontal label="Rows per page" class="col-6" :label-size="6">
         <b-form-select :options="[{text:5,value:5},{text:10,value:10},{text:15,value:15}]" v-model="perPage">
@@ -21,7 +21,7 @@
       </template>
     </b-table>
     <div class="justify-content-center row my-1">
-      <b-pagination size="md" :total-rows="this.inventories.length" :per-page="perPage" v-model="currentPage" />
+      <b-pagination size="md" :total-rows="this.inventories.inventories.length" :per-page="perPage" v-model="currentPage" />
     </div>
   </noh-panel>
 </template>
@@ -43,7 +43,11 @@
         },
         currentPage: 1,
         perPage: 5,
-        filter: null
+        filter: null,
+        buttons: [
+          { text: 'Add', callback: () => { alert('Testing Add'); } },
+          { text: 'Delete', callback: () => { alert('Testing Delete'); } }
+        ]
       };
     },
     computed: mapState([
